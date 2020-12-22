@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { Grid, Segment } from 'semantic-ui-react';
-import { Dispatch, useReducer, useState } from 'react';
 
+// import GoogleMaps from 'app/components/specific/googleMaps';
 import AddressField from 'app/components/specific/addressField';
 import EateryType from 'app/components/specific/eateryType';
 import Rating from 'app/components/specific/rating';
@@ -14,6 +14,7 @@ const LandingPage = (): JSX.Element => {
       <Grid.Column>
         <Segment>
           <h1>Map</h1>
+          {/* <GoogleMaps /> */}
           <h3>Input field for address. Submit Button. Get my current address</h3>
           <AddressField />
           <h3>Type of Eatery (Restaurant/Café) button</h3>
