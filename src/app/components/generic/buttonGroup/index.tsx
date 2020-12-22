@@ -4,14 +4,27 @@ interface IProps {
   className: string;
   buttons: string[];
   conditional: boolean;
+  onClick: (string) => void;
+  focussed: string;
 }
 
 const ButtonGroup = (props: IProps): JSX.Element => {
   var buttonsJSXArray = [] as JSX.Element[];
   props.buttons.map((button: string, key: number) => {
-    buttonsJSXArray.push(<Button key={key}>{button}</Button>);
+    buttonsJSXArray.push(
+      button === props.focussed ? (
+        // TODO: change inline style
+        <Button key={key} onClick={props.onClick} value={button} style={{ backgroundColor: '#cce6ff' }}>
+          {button}
+        </Button>
+      ) : (
+        <Button key={key} onClick={props.onClick} value={button}>
+          {button}
+        </Button>
+      )
+    );
     if (props.conditional && key < props.buttons.length - 1) {
-      buttonsJSXArray.push(<Button.Or key={`or${key}`} />);
+      buttonsJSXArray.push(<Button.Or key={`or-${key}`} />);
     }
   });
 

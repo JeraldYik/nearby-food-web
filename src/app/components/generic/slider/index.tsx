@@ -9,6 +9,9 @@ export interface IProps {
   max: number;
   step: number;
   discrete: boolean;
+  onChange: (string) => void;
+  label?: string;
+  labelLeft?: boolean;
 }
 
 const SliderComponent = (props: IProps) => {
@@ -19,8 +22,8 @@ const SliderComponent = (props: IProps) => {
     min: props.min,
     max: props.max,
     step: props.step,
-    onChange: (values) => {
-      console.log(values);
+    onChange: (values: number | number[]) => {
+      props.onChange(values);
       setValues(values);
     }
   };
@@ -34,11 +37,11 @@ const SliderComponent = (props: IProps) => {
         {Array.isArray(values) ? (
           values.map((val, i) => (
             <Label key={i} color='blue'>
-              {val}
+              {props.label ? (props.labelLeft ? props.label + val : val + props.label) : val}
             </Label>
           ))
         ) : (
-          <Label color='blue'>{values}</Label>
+          <Label color='blue'>{props.label ? (props.labelLeft ? props.label + values : values + props.label) : values}</Label>
         )}
       </Grid.Column>
     </Grid>
