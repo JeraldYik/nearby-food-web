@@ -1,30 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Nearest Food Webpage
 
-## Getting Started
+## Overview
 
-First, run the development server:
+This mini-project is for me to practice building a full-stack end-to-end web interface from scratch, while explore different APIs (Google Maps API).
+This project is expounded on the functionality introduced in my [telegram bot](https://github.com/JeraldYik/telegram-bot)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+<!-- Access bot on telegram via id [@jyik001_test_bot](https://t.me/jyik001_test_bot) or on [heroku website](https://jyik001-telegram-bot.herokuapp.com/) -->
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Services Used
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- Next.js with Typescript (naturally React.js)
+- Google Maps API
+- Semantic UI
 
-## Learn More
+## Front-end:
 
-To learn more about Next.js, take a look at the following resources:
+- [ ] Interactive map (OSM)
+- Filters (Button/Slider)
+  - [x] Type of Eatery (Restaurant, Cafe)
+  - [x] Rating
+  - [x] Dollar Sign
+  - [x] Radius
+- [x] User input of address/postal-code (Input field)
+- [ ] Get user's live location
+- [x] State management: useReducer, useContext hook
+- [ ] Styling (Semantic UI)
+- [ ] About page
+- [ ] Login/Signup page
+- [ ] User info page
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## API calling
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- [x] Set up infrastructure to call API & handle errors
+- [ ] Can successfully call API
 
-## Deploy on Vercel
+## Back-end
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [ ] Log in functionality
+- [ ] Set up DB
+- [ ] User can favourite a certain location -> User info stored in DB
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Deployment
+
+- [ ] Deploy onto cloud (which cloud service not decided)
