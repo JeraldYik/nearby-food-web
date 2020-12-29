@@ -1,22 +1,29 @@
 import { createContext, useReducer, Context } from 'react';
 import GlobalReducer from 'app/reducers';
 
+export enum EateryTypes {
+  Restaurant = 'restaurant',
+  Café = 'cafe'
+}
+
 export interface IState {
   address: string;
-  type: 'Restaurant' | 'Café';
+  type: EateryTypes;
   rating: number;
   minPrice: number;
   maxPrice: number;
   radius: number;
+  results: Array<any>;
 }
 
 const initialState: IState = {
   address: '',
-  type: 'Restaurant',
+  type: Object.values(EateryTypes)[0],
   rating: 3.5,
   minPrice: 1,
   maxPrice: 2,
-  radius: 2000
+  radius: 2000,
+  results: []
 };
 
 export const GlobalContext: Context<IState> = createContext<IState>(initialState);

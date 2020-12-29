@@ -1,5 +1,6 @@
 /.next/*
 /node_modules/*
 /src/app/.next/*
-.env
+.env*
+next.config.js
 

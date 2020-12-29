@@ -25,6 +25,7 @@ This project is expounded on the functionality introduced in my [telegram bot](h
 - [ ] Get user's live location
 - [x] State management: useReducer, useContext hook
 - [ ] Styling (Semantic UI)
+- [ ] Handle appropriate error messages (404, 500 etc)
 - [ ] About page
 - [ ] Login/Signup page
 - [ ] User info page

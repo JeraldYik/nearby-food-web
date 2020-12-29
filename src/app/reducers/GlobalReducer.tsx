@@ -19,6 +19,8 @@ const GlobalReducer = (state: IState, action: IAction): IState => {
       return { ...state, minPrice: parseInt(action.payload[0]), maxPrice: parseInt(action.payload[1]) };
     case 'setRadius':
       return { ...state, radius: parseFloat(action.payload) * 1000 };
+    case 'setResults':
+      return { ...state, results: action.payload };
     default:
       return state;
   }
