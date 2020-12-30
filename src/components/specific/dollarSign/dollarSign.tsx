@@ -1,11 +1,11 @@
 import SliderComponent from 'components/generic/slider';
 
 import { useContext } from 'react';
-import { GlobalContext, IState } from 'stores';
+import { ParamsContext, IParamsState } from 'stores/ParamsStore';
 
 const DollarSign = (): JSX.Element => {
   // TODO: to resolve
-  const [_, dispatch] = useContext<IState>(GlobalContext);
+  const [_, dispatch] = useContext<IParamsState>(ParamsContext);
 
   const handleChangeEvent = (values: number[]) => {
     dispatch({ type: 'setDollar', payload: values });

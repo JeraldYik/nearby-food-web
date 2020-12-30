@@ -1,2 +1,3 @@
-import GlobalReducer from './GlobalReducer';
-export default GlobalReducer;
+import ParamsReducer from './ParamsReducer';
+import ResultsReducer from './ResultsReducer';
+export { ParamsReducer, ResultsReducer };

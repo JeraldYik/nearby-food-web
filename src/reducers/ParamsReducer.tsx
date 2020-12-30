@@ -1,11 +1,11 @@
-import { IState } from 'stores';
+import { IParamsState } from 'stores/ParamsStore';
 
 interface IAction {
   type: string;
   payload?: string;
 }
 
-const GlobalReducer = (state: IState, action: IAction): IState => {
+const ParamsReducer = (state: IParamsState, action: IAction): IParamsState => {
   console.log(state, action);
   switch (action.type) {
     // TODO: to resolve
@@ -24,4 +24,4 @@ const GlobalReducer = (state: IState, action: IAction): IState => {
   }
 };
 
-export default GlobalReducer;
+export default ParamsReducer;

@@ -1,13 +1,16 @@
 import 'assets/styles/globals.css';
 import 'semantic-ui-css/semantic.min.css';
 
-import GlobalProvider from 'stores';
+import ParamsProvider from 'stores/ParamsStore';
+import ResultsProvider from 'stores/ResultsStore';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <GlobalProvider>
-      <Component {...pageProps} />
-    </GlobalProvider>
+    <ParamsProvider>
+      <ResultsProvider>
+        <Component {...pageProps} />
+      </ResultsProvider>
+    </ParamsProvider>
   );
 }
 

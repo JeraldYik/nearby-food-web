@@ -1,12 +1,12 @@
 import ButtonGroup from 'components/generic/buttonGroup';
 
 import { useContext } from 'react';
-import { GlobalContext, IState, EateryTypes } from 'stores';
+import { ParamsContext, IParamsState, EateryTypes } from 'stores/ParamsStore';
 
 const EateryType = (): JSX.Element => {
   const types = Object.keys(EateryTypes);
   // TODO: to resolve
-  const [state, dispatch] = useContext<IState>(GlobalContext);
+  const [state, dispatch] = useContext<IParamsState>(ParamsContext);
 
   const handleClickEvent = (e) => {
     dispatch({ type: 'setType', payload: EateryTypes[e.target.value] });

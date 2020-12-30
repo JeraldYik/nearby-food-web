@@ -1,4 +1,4 @@
-import { EateryTypes } from 'stores';
+import { EateryTypes } from 'stores/ParamsStore';
 
 export interface ILatlng {
   lat: string;
@@ -17,12 +17,4 @@ export interface IGetResultsFromLatlng {
   maxprice: number;
   radius: number;
   opennow: '';
-}
-
-export interface IResult {
-  name: string;
-  rating: number;
-  priceLevel: number;
-  vicinity: string;
-  url: string;
 }

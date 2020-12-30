@@ -7,6 +7,7 @@ import EateryType from 'components/specific/eateryType';
 import Rating from 'components/specific/rating';
 import DollarSign from 'components/specific/dollarSign';
 import RadiusField from 'components/specific/radiusField';
+import Results from 'components/specific/results';
 
 const LandingPage = (): JSX.Element => {
   return (
@@ -28,7 +29,10 @@ const LandingPage = (): JSX.Element => {
         </Segment>
       </Grid.Column>
       <Grid.Column>
-        <Segment>Results place</Segment>
+        <Segment>
+          <h3>Results Place</h3>
+          <Results />
+        </Segment>
       </Grid.Column>
     </Grid>
   );
