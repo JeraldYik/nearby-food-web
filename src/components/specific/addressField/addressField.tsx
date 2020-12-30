@@ -2,7 +2,8 @@ import InputField from 'components/generic/inputField';
 
 import { useContext, useEffect, useState } from 'react';
 import { GlobalContext, IState } from 'stores';
-import GoogleConsoleAPI, { ILatlng, IGetLatLngFromAddress } from 'lib/api/googleConsole/googleConsoleAPI';
+import GoogleConsoleAPI from 'lib/api/googleConsole/googleConsoleAPI';
+import { ILatlng, IGetLatLngFromAddress, IGetResultsFromLatlng, IResult } from 'lib/api/googleConsole/interfaces';
 
 const AddressField = (): JSX.Element => {
   // TODO: to resolve
@@ -20,16 +21,27 @@ const AddressField = (): JSX.Element => {
       const queries: IGetLatLngFromAddress = {
         address: state.address
       };
-      GoogleConsoleAPI(queries).then((response) => {
+      GoogleConsoleAPI.getLatLngFromAddress(queries).then((response: ILatlng) => {
         setLatlng(response);
       });
     }
   }, [state]);
 
   useEffect(() => {
-    // if (Object.keys(latlng).length > 0) {
-    console.log(latlng);
-    // }
+    if (latlng && Object.keys(latlng).length > 0) {
+      const queries: IGetResultsFromLatlng = {
+        location: `${latlng.lat},${latlng.lng}`,
+        type: state.type,
+        rating: state.rating,
+        minprice: state.minPrice,
+        maxprice: state.maxPrice,
+        radius: state.radius,
+        opennow: ''
+      };
+      GoogleConsoleAPI.getResultsFromLatlng(queries).then((response: Array<IResult>) => {
+        console.log(response);
+      });
+    }
   }, [latlng]);
 
   return (

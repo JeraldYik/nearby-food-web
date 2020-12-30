@@ -44,6 +44,10 @@ const testMiddleware = (req, res, next) => {
   next();
 };
 
+/** DOCUMENTATION
+ *  https://developers.google.com/maps/documentation/geocoding/overview
+ */
+
 export default async (req: NextApiRequest, res: NextApiResponse): Promise<Response | void> => {
   console.log(req.query);
   const baseURL = 'https://maps.googleapis.com/maps/api/geocode/json';
