@@ -1,1 +1,0 @@
-{"ast":null,"code":"export { default } from './slider';","map":{"version":3,"sources":["/Users/jerald/Desktop/nearby-food-web/src/components/generic/slider/index.tsx"],"names":["default"],"mappings":"AAAA,SAASA,OAAT,QAAwB,UAAxB","sourcesContent":["export { default } from './slider';\n"]},"metadata":{},"sourceType":"module"}

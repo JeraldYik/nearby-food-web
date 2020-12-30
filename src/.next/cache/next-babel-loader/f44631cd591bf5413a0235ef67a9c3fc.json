@@ -1,1 +1,0 @@
-{"ast":null,"code":"export { default } from './inputField';","map":{"version":3,"sources":["/Users/jerald/Desktop/nearby-food-web/src/components/generic/inputField/index.tsx"],"names":["default"],"mappings":"AAAA,SAASA,OAAT,QAAwB,cAAxB","sourcesContent":["export { default } from './inputField';\n"]},"metadata":{},"sourceType":"module"}
