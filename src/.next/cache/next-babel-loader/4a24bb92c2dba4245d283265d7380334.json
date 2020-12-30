@@ -1,0 +1,1 @@
+{"ast":null,"code":"export { default } from './dollarSign';","map":{"version":3,"sources":["/Users/jerald/Desktop/nearby-food-web/src/components/specific/dollarSign/index.tsx"],"names":["default"],"mappings":"AAAA,SAASA,OAAT,QAAwB,cAAxB","sourcesContent":["export { default } from './dollarSign';\n"]},"metadata":{},"sourceType":"module"}

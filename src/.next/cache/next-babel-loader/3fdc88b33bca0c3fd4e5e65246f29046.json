@@ -1,0 +1,1 @@
+{"ast":null,"code":"export { default } from './rating';","map":{"version":3,"sources":["/Users/jerald/Desktop/nearby-food-web/src/components/specific/rating/index.tsx"],"names":["default"],"mappings":"AAAA,SAASA,OAAT,QAAwB,UAAxB","sourcesContent":["export { default } from './rating';\n"]},"metadata":{},"sourceType":"module"}

@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev ./src/app",
-    "build": "next build ./src/app",
-    "start": "next start ./src/app"
+    "dev": "next dev ./src",
+    "build": "next build ./src",
+    "start": "next start ./src"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
@@ -13,6 +13,7 @@
     "class-transformer": "^0.3.1",
     "cors": "^2.8.5",
     "next": "10.0.3",
+    "next-connect": "^0.9.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-semantic-ui-range": "^0.7.0",

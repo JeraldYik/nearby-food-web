@@ -1,0 +1,1 @@
+{"ast":null,"code":"export { default } from './eateryType';","map":{"version":3,"sources":["/Users/jerald/Desktop/nearby-food-web/src/components/specific/eateryType/index.tsx"],"names":["default"],"mappings":"AAAA,SAASA,OAAT,QAAwB,cAAxB","sourcesContent":["export { default } from './eateryType';\n"]},"metadata":{},"sourceType":"module"}
