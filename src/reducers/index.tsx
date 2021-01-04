@@ -1,3 +1,4 @@
 import ParamsReducer from './ParamsReducer';
 import ResultsReducer from './ResultsReducer';
-export { ParamsReducer, ResultsReducer };
+import ClickedReducer from './ClickedReducer';
+export { ParamsReducer, ResultsReducer, ClickedReducer };

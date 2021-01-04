@@ -39,14 +39,13 @@ const getResultsFromLatlng = async (queries: IGetResultsFromLatlng): Promise<Arr
     const isNextPageToken: boolean = nextPageToken !== '';
     const filteredQueries = isNextPageToken ? { key: GOOGLE_APIKEY, pagetoken: nextPageToken } : { ...queries, key: GOOGLE_APIKEY, rating: null };
     const response = await API.get(false, places_nearbysearch_path, null, filteredQueries, null);
-    // console.log(filteredQueries, response);
     // TODO: to resolve
     nextPageToken = response['next_page_token'] ? response['next_page_token'] : '';
     results = [...results, ...response.results];
     // small delay of 2s between each page of results
     await sleep(2000);
 
-    if (!isNextPageToken) break;
+    if (nextPageToken === '') break;
     pages++;
   }
 

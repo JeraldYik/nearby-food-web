@@ -2,16 +2,16 @@ import { IParamsState } from 'stores/ParamsStore';
 
 interface IAction {
   type: string;
-  payload?: string;
+  payload: string;
 }
 
 const ParamsReducer = (state: IParamsState, action: IAction): IParamsState => {
   console.log(state, action);
   switch (action.type) {
-    // TODO: to resolve
     case 'setAddress':
       return { ...state, address: action.payload };
     case 'setType':
+      // TODO: to resolve
       return { ...state, type: action.payload };
     case 'setRating':
       return { ...state, rating: parseFloat(action.payload) };

@@ -3,6 +3,7 @@ import InputField from 'components/generic/inputField';
 import { useContext, useEffect, useState } from 'react';
 import { ParamsContext, IParamsState } from 'stores/ParamsStore';
 import { IResult, ResultsContext, IResultsState } from 'stores/ResultsStore';
+import { IClickedState, ClickedContext } from 'stores/ClickedStore';
 import GoogleConsoleAPI from 'lib/api/googleConsole/googleConsoleAPI';
 import { ILatlng, IGetLatLngFromAddress, IGetResultsFromLatlng } from 'lib/api/googleConsole/interfaces';
 
@@ -18,23 +19,26 @@ const exampledata = new Array(numResults).fill({
 const AddressField = (): JSX.Element => {
   // TODO: to resolve
   const [paramsState, paramsDispatch] = useContext<IParamsState>(ParamsContext);
-  const [resultsState, resultsDispatch] = useContext<IResultsState>(ResultsContext);
+  const [_, resultsDispatch] = useContext<IResultsState>(ResultsContext);
+  const [clickedState, clickedDispatch] = useContext<IClickedState>(ClickedContext);
   const [latlng, setLatlng] = useState<ILatlng>({} as ILatlng);
-  const [submitClicked, setSubmitClicked] = useState<boolean>(false);
+  // to prevent running of useEffect before data is fetched and parsed completely
+  const [internalClickState, setInternalClickState] = useState<boolean>(false);
+
+  const handleClickEvent = (value: string) => {
+    paramsDispatch({ type: 'setAddress', payload: value });
+    setInternalClickState(true);
+  };
 
   // const handleClickEvent = (value: string) => {
-  //   paramsDispatch({ type: 'setAddress', payload: value });
+  //   resultsDispatch({ type: 'setResults', payload: exampledata });
   //   setSubmitClicked(true);
   // };
 
-  const handleClickEvent = (value: string) => {
-    resultsDispatch({ type: 'setResults', payload: exampledata });
-    setSubmitClicked(true);
-  };
-
-  /**useEffect(() => {
+  useEffect(() => {
     // TODO: produce error message when address field is empty
-    if (paramsState.address !== '' && submitClicked) {
+    if (paramsState.address !== '' && internalClickState) {
+      clickedDispatch({ type: 'setClicked', payload: true });
       // make api call to google console
       const queries: IGetLatLngFromAddress = {
         address: paramsState.address
@@ -42,9 +46,9 @@ const AddressField = (): JSX.Element => {
       GoogleConsoleAPI.getLatLngFromAddress(queries).then((response: ILatlng) => {
         setLatlng(response);
       });
-      setSubmitClicked(false);
+      setInternalClickState(false);
     }
-  }, [submitClicked]);
+  }, [internalClickState]);
 
   useEffect(() => {
     // ignore default (on load)
@@ -59,16 +63,18 @@ const AddressField = (): JSX.Element => {
         opennow: ''
       };
       GoogleConsoleAPI.getResultsFromLatlng(queries).then((response: Array<IResult>) => {
+        clickedDispatch({ type: 'setClicked', payload: false });
         resultsDispatch({ type: 'setResults', payload: response });
       });
     }
-  }, [latlng]); */
+  }, [latlng]);
 
   return (
     <InputField
       className='address-field'
       placeholder='Enter an address to query (full address/postal code/building name etc...)'
       onClick={handleClickEvent}
+      clicked={clickedState.clicked}
     />
   );
 };

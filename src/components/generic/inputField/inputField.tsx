@@ -9,6 +9,7 @@ interface IProps {
   label?: string;
   labelPosition?: 'left' | 'right' | undefined;
   onClick: (string) => void;
+  clicked: boolean;
 }
 
 const InputField = (props: IProps): JSX.Element => {
@@ -23,7 +24,7 @@ const InputField = (props: IProps): JSX.Element => {
   };
 
   return (
-    <div className={`input-div ${props.className}`} style={{ overflow: 'hidden' }}>
+    <div className={`input-div ${props.className}`}>
       <Input
         label={props.label}
         labelPosition={props.labelPosition}
@@ -32,7 +33,7 @@ const InputField = (props: IProps): JSX.Element => {
         onChange={handleChangeEvent}
         style={{ width: '85%' }}
       />
-      <Button size='large' onClick={handleClickEvent}>
+      <Button primary size='large' onClick={handleClickEvent} disabled={props.clicked}>
         Submit
       </Button>
     </div>

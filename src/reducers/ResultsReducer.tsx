@@ -1,8 +1,8 @@
-import { IResultsState } from 'stores/ResultsStore';
+import { IResultsState, IResult } from 'stores/ResultsStore';
 
 interface IAction {
   type: string;
-  payload?: string;
+  payload: IResult[];
 }
 
 const ResultsReducer = (state: IResultsState, action: IAction): IResultsState => {
