@@ -18,6 +18,7 @@ const Results = (): JSX.Element => {
           priceLevel={s.priceLevel}
           vicinity={s.vicinity}
           url={s.url}
+          key={`result-${idx}`}
         />
       ))}
     </div>

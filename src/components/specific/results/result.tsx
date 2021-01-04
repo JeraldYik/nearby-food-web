@@ -1,5 +1,6 @@
 import { IResult } from 'stores/ResultsStore';
-import { Container } from 'semantic-ui-react';
+import { Card } from 'semantic-ui-react';
+import { STAR_EMOJI } from 'assets/constants';
 
 interface IExtra {
   className: string;
@@ -8,14 +9,20 @@ interface IExtra {
 export interface IProps extends IResult, IExtra {}
 
 const Result = (props: IProps): JSX.Element => {
+  // find api to get company logo
   return (
-    <Container className={props.className}>
-      <p>Name: {props.name}</p>
-      <p>Rating: {props.rating}</p>
-      <p>Price Level: {props.priceLevel}</p>
-      <p>Vicinity: {props.vicinity}</p>
-      <p>URL: {props.url}</p>
-    </Container>
+    <Card href={props.url} target='_blank' fluid>
+      <Card.Content>
+        <Card.Header>{props.name}</Card.Header>
+        <Card.Meta>
+          <span className='rating'>
+            ({props.rating} {STAR_EMOJI})
+          </span>
+          <span className='price-level'>({'$'.repeat(props.priceLevel)})</span>
+        </Card.Meta>
+        <Card.Description>{props.vicinity}</Card.Description>
+      </Card.Content>
+    </Card>
   );
 };
 

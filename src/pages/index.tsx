@@ -30,7 +30,7 @@ const LandingPage = (): JSX.Element => {
       </Grid.Column>
       <Grid.Column>
         <Segment>
-          <h3>Results Place</h3>
+          <h3>Results Segment</h3>
           <Results />
         </Segment>
       </Grid.Column>

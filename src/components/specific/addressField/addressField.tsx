@@ -6,13 +6,14 @@ import { IResult, ResultsContext, IResultsState } from 'stores/ResultsStore';
 import GoogleConsoleAPI from 'lib/api/googleConsole/googleConsoleAPI';
 import { ILatlng, IGetLatLngFromAddress, IGetResultsFromLatlng } from 'lib/api/googleConsole/interfaces';
 
-const jsonexample = {
+const numResults = 10;
+const exampledata = new Array(numResults).fill({
   name: 'HANS IM GLÜCK German Burgergrill | Singapore VIVO CITY',
   rating: '4.4',
   priceLevel: '2',
   vicinity: '1 Harbourfront Walk, #01-57 Vivo City',
   url: 'https://www.google.com/maps/search/?api=1&query=1.2644032,103.8222071&query_place_id=ChIJxwpVWuYb2jERae_-wJQNHI8'
-};
+});
 
 const AddressField = (): JSX.Element => {
   // TODO: to resolve
@@ -21,12 +22,17 @@ const AddressField = (): JSX.Element => {
   const [latlng, setLatlng] = useState<ILatlng>({} as ILatlng);
   const [submitClicked, setSubmitClicked] = useState<boolean>(false);
 
+  // const handleClickEvent = (value: string) => {
+  //   paramsDispatch({ type: 'setAddress', payload: value });
+  //   setSubmitClicked(true);
+  // };
+
   const handleClickEvent = (value: string) => {
-    paramsDispatch({ type: 'setAddress', payload: value });
+    resultsDispatch({ type: 'setResults', payload: exampledata });
     setSubmitClicked(true);
   };
 
-  useEffect(() => {
+  /**useEffect(() => {
     // TODO: produce error message when address field is empty
     if (paramsState.address !== '' && submitClicked) {
       // make api call to google console
@@ -56,7 +62,7 @@ const AddressField = (): JSX.Element => {
         resultsDispatch({ type: 'setResults', payload: response });
       });
     }
-  }, [latlng]);
+  }, [latlng]); */
 
   return (
     <InputField
