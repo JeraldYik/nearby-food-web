@@ -24,6 +24,7 @@ This project is expounded on the functionality introduced in my [telegram bot](h
 - [x] User input of address/postal-code (Input field)
 - [ ] Get user's live location
 - [x] State management: useReducer, useContext hook
+- [x] Display of Results (with Pagination)
 - [ ] Styling (Semantic UI)
 - [ ] Handle appropriate error messages (404, 500 etc)
 - [ ] About page
