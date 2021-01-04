@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev ./src",
     "build": "next build ./src",
-    "start": "next start ./src"
+    "start": "npm run build && next start ./src"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",

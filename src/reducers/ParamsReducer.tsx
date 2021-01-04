@@ -1,11 +1,12 @@
+import { Dispatch } from 'react';
 import { IParamsState } from 'stores/ParamsStore';
 
-interface IAction {
+export interface IParamsAction {
   type: string;
   payload: string;
 }
 
-const ParamsReducer = (state: IParamsState, action: IAction): IParamsState => {
+const ParamsReducer = (state: IParamsState, action: IParamsAction) => {
   console.log(state, action);
   switch (action.type) {
     case 'setAddress':

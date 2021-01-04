@@ -1,6 +1,6 @@
 import { IResultsState, IResult } from 'stores/ResultsStore';
 
-interface IAction {
+export interface IResultsAction {
   type: string;
   payload: IResult[];
 }

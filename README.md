@@ -3,9 +3,9 @@
 ## Overview
 
 This mini-project is for me to practice building a full-stack end-to-end web interface from scratch, while explore different APIs (Google Maps API).
-This project is expounded on the functionality introduced in my [telegram bot](https://github.com/JeraldYik/telegram-bot)
+This project expounds on the functionality introduced in my [telegram bot](https://github.com/JeraldYik/telegram-bot)
 
-<!-- Access bot on telegram via id [@jyik001_test_bot](https://t.me/jyik001_test_bot) or on [heroku website](https://jyik001-telegram-bot.herokuapp.com/) -->
+Access bot on telegram via id [@jyik001_test_bot](https://t.me/jyik001_test_bot) or on [heroku website](https://jyik001-telegram-bot.herokuapp.com/)
 
 ## Services Used
 
@@ -44,4 +44,4 @@ This project is expounded on the functionality introduced in my [telegram bot](h
 
 ## Deployment
 
-- [ ] Deploy onto cloud (which cloud service not decided)
+- [ ] Deploy onto cloud (will use Heroku for now, since Free Tier Amazon EC2 only lasts for 31 days)

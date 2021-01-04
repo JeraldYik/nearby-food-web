@@ -1,5 +1,5 @@
 import { createContext, useReducer, Context } from 'react';
-import { ResultsReducer } from 'reducers';
+import ResultsReducer from 'reducers/ResultsReducer';
 
 export interface IResult {
   name: string;
@@ -19,12 +19,10 @@ const initialState: IResultsState = {
 
 export const ResultsContext: Context<IResultsState> = createContext<IResultsState>(initialState);
 
-const ResultsProvider = ({ children }: { children: JSX.Element[] | JSX.Element }): JSX.Element => {
+export const ResultsProvider = ({ children }: { children: JSX.Element[] | JSX.Element }): JSX.Element => {
   // <(IResultsState, IAction) => IResultsState, IResultsState>
   const [state, dispatch] = useReducer(ResultsReducer, initialState);
 
   // TODO: to resolve
   return <ResultsContext.Provider value={[state, dispatch]}>{children}</ResultsContext.Provider>;
 };
-
-export default ResultsProvider;
