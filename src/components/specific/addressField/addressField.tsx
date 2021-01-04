@@ -7,14 +7,14 @@ import { IClickedState, ClickedContext } from 'stores/ClickedStore';
 import GoogleConsoleAPI from 'lib/api/googleConsole/googleConsoleAPI';
 import { ILatlng, IGetLatLngFromAddress, IGetResultsFromLatlng } from 'lib/api/googleConsole/interfaces';
 
-const numResults = 10;
-const exampledata = new Array(numResults).fill({
-  name: 'HANS IM GLÜCK German Burgergrill | Singapore VIVO CITY',
-  rating: '4.4',
-  priceLevel: '2',
-  vicinity: '1 Harbourfront Walk, #01-57 Vivo City',
-  url: 'https://www.google.com/maps/search/?api=1&query=1.2644032,103.8222071&query_place_id=ChIJxwpVWuYb2jERae_-wJQNHI8'
-});
+// const numResults = 20;
+// const exampledata = new Array(numResults).fill({
+//   name: 'HANS IM GLÜCK German Burgergrill | Singapore VIVO CITY',
+//   rating: '4.4',
+//   priceLevel: '2',
+//   vicinity: '1 Harbourfront Walk, #01-57 Vivo City',
+//   url: 'https://www.google.com/maps/search/?api=1&query=1.2644032,103.8222071&query_place_id=ChIJxwpVWuYb2jERae_-wJQNHI8'
+// });
 
 const AddressField = (): JSX.Element => {
   // TODO: to resolve
@@ -30,10 +30,9 @@ const AddressField = (): JSX.Element => {
     setInternalClickState(true);
   };
 
-  // const handleClickEvent = (value: string) => {
+  // useEffect(() => {
   //   resultsDispatch({ type: 'setResults', payload: exampledata });
-  //   setSubmitClicked(true);
-  // };
+  // }, []);
 
   useEffect(() => {
     // TODO: produce error message when address field is empty
