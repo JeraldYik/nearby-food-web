@@ -5,7 +5,8 @@
 [Website Link](https://nearby-food-web.herokuapp.com/)
 
 This mini-project is for me to practice building a full-stack end-to-end web interface from scratch, while explore different APIs (Google Maps API).
-This project expounds on the functionality introduced in my [telegram bot](https://github.com/JeraldYik/telegram-bot) (Access bot on telegram via id [@jyik001_test_bot](https://t.me/jyik001_test_bot) or on [heroku website](https://jyik001-telegram-bot.herokuapp.com/))
+This project expounds on the functionality introduced in my [telegram bot](https://github.com/JeraldYik/telegram-bot)
+(Access bot on telegram via id [@jyik001_test_bot](https://t.me/jyik001_test_bot) or on [heroku website](https://jyik001-telegram-bot.herokuapp.com/))
 
 ## Services Used
 
