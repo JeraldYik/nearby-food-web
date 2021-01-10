@@ -5,10 +5,14 @@ import { ILatlng, IGetLatLngFromAddress, IGetResultsFromLatlng } from 'lib/api/g
 import { IResult } from 'stores/ResultsStore';
 import { sleep } from 'lib/helper';
 
-// export interface IGoogleConsoleAPI extends IGetLatLngFromAddress, IGetResultsFromLatlng {}
+let GOOGLE_APIKEY: string = '';
 
-const { publicRuntimeConfig } = getConfig();
-const GOOGLE_APIKEY: string = publicRuntimeConfig.GOOGLE_APIKEY || '';
+if (process.env.NODE_ENV === 'development') {
+  const { publicRuntimeConfig } = getConfig();
+  GOOGLE_APIKEY = publicRuntimeConfig.GOOGLE_APIKEY || '';
+} else {
+  GOOGLE_APIKEY = process.env.GOOGLE_APIKEY || '';
+}
 
 const getLatLngFromAddress = async (queries: IGetLatLngFromAddress): Promise<ILatlng> => {
   queries['address'] += ' Singapore';
