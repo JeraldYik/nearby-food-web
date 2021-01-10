@@ -6,10 +6,7 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "jsx": "preserve",
-    "lib": [
-      "es7",
-      "dom"
-    ],
+    "lib": ["es7", "dom"],
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowJs": true,
@@ -25,16 +22,11 @@
     "importHelpers": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
-    // "noUnusedLocals": true,
+    "noUnusedLocals": true,
     "sourceMap": true,
     "noEmit": true,
     "isolatedModules": true
   },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "node_modules",
-    "build"
-  ]
+  "include": ["src"],
+  "exclude": ["node_modules", "build"]
 }

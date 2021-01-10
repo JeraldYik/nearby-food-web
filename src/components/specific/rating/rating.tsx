@@ -2,14 +2,13 @@ import SliderComponent from 'components/generic/slider';
 import { STAR_EMOJI } from 'assets/constants';
 
 import { useContext } from 'react';
-import { ParamsContext, IParamsState } from 'stores/ParamsStore';
+import { ParamsContext } from 'stores/ParamsStore';
 
 const Rating = (): JSX.Element => {
-  // TODO: to resolve
-  const [_, dispatch] = useContext<IParamsState>(ParamsContext);
+  const { dispatch: paramsDispatch } = useContext(ParamsContext);
 
   const handleChangeEvent = (values) => {
-    dispatch({ type: 'setRating', payload: values });
+    paramsDispatch({ type: 'setRating', payload: values });
   };
 
   return (

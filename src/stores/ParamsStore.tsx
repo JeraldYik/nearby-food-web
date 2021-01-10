@@ -1,5 +1,5 @@
-import { createContext, useReducer, Context } from 'react';
-import ParamsReducer from 'reducers/ParamsReducer';
+import { createContext, useReducer } from 'react';
+import ParamsReducer, { IParamsAction } from 'reducers/ParamsReducer';
 
 export enum EateryTypes {
   Restaurant = 'restaurant',
@@ -24,11 +24,16 @@ const initialState: IParamsState = {
   radius: 2000
 };
 
-export const ParamsContext: Context<IParamsState> = createContext<IParamsState>(initialState);
+export const ParamsContext = createContext<{
+  state: IParamsState;
+  dispatch: (action: IParamsAction) => void;
+}>({
+  state: initialState,
+  dispatch: () => {}
+});
 
 export const ParamsProvider = ({ children }: { children: JSX.Element[] | JSX.Element }): JSX.Element => {
   const [state, dispatch] = useReducer(ParamsReducer, initialState);
 
-  // TODO: to resolve
-  return <ParamsContext.Provider value={[state, dispatch]}>{children}</ParamsContext.Provider>;
+  return <ParamsContext.Provider value={{ state, dispatch }}>{children}</ParamsContext.Provider>;
 };

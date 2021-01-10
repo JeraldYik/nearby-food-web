@@ -1,18 +1,16 @@
-import { Dispatch } from 'react';
 import { IParamsState } from 'stores/ParamsStore';
 
 export interface IParamsAction {
-  type: string;
-  payload: string;
+  type: 'setAddress' | 'setType' | 'setRating' | 'setDollar' | 'setRadius';
+  payload: any;
 }
 
-const ParamsReducer = (state: IParamsState, action: IParamsAction) => {
-  console.log(state, action);
+const ParamsReducer = (state: IParamsState, action: IParamsAction): IParamsState => {
+  // console.log(state, action);
   switch (action.type) {
     case 'setAddress':
       return { ...state, address: action.payload };
     case 'setType':
-      // TODO: to resolve
       return { ...state, type: action.payload };
     case 'setRating':
       return { ...state, rating: parseFloat(action.payload) };
@@ -21,7 +19,7 @@ const ParamsReducer = (state: IParamsState, action: IParamsAction) => {
     case 'setRadius':
       return { ...state, radius: parseFloat(action.payload) * 1000 };
     default:
-      return state;
+      throw new Error('Unrecognised action!');
   }
 };
 

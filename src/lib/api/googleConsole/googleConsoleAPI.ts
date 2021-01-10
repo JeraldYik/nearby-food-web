@@ -1,7 +1,8 @@
 import API from 'lib/api/call';
 import getConfig from 'next/config';
 import { geocode_path, places_nearbysearch_path } from 'lib/api/googleConsole/paths';
-import { ILatlng, IGetLatLngFromAddress, IGetResultsFromLatlng, IResult } from 'lib/api/googleConsole/interfaces';
+import { ILatlng, IGetLatLngFromAddress, IGetResultsFromLatlng } from 'lib/api/googleConsole/interfaces';
+import { IResult } from 'stores/ResultsStore';
 import { sleep } from 'lib/helper';
 
 // export interface IGoogleConsoleAPI extends IGetLatLngFromAddress, IGetResultsFromLatlng {}
@@ -10,17 +11,9 @@ const { publicRuntimeConfig } = getConfig();
 const GOOGLE_APIKEY: string = publicRuntimeConfig.GOOGLE_APIKEY || '';
 
 const getLatLngFromAddress = async (queries: IGetLatLngFromAddress): Promise<ILatlng> => {
-  // const params = new contracts.GetLatLngFromAddress.Params();
-  // const queries = new contracts.GetLatLngFromAddress.Queries();
-  // const body = new contracts.GetLatLngFromAddress.Body();
-  // queries.address = `${p.address} Singapore`;
-  // queries.key = apiKey;
-  // const response = await API.call<contracts.GetLatLngFromAddress.Response>(req);
-  // return await axios.get('http://localhost:3000/api/googleConsole');
-  // const geocodeURI = `https://maps.googleapis.com/maps/api/geocode/json?address=${address} Singapore&key=${apiKey}`;
   queries['address'] += ' Singapore';
   queries['key'] = GOOGLE_APIKEY;
-  const response = await API.get(true, geocode_path, null, queries, null);
+  const response: any = await API.get(true, geocode_path, null, queries, null);
   // TODO: to resolve
   const latlng: ILatlng = {
     lat: response.results[0].geometry.location.lat,
@@ -38,7 +31,7 @@ const getResultsFromLatlng = async (queries: IGetResultsFromLatlng): Promise<Arr
   while (pages <= 3) {
     const isNextPageToken: boolean = nextPageToken !== '';
     const filteredQueries = isNextPageToken ? { key: GOOGLE_APIKEY, pagetoken: nextPageToken } : { ...queries, key: GOOGLE_APIKEY, rating: null };
-    const response = await API.get(false, places_nearbysearch_path, null, filteredQueries, null);
+    const response: any = await API.get(false, places_nearbysearch_path, null, filteredQueries, null);
     // TODO: to resolve
     nextPageToken = response['next_page_token'] ? response['next_page_token'] : '';
     results = [...results, ...response.results];

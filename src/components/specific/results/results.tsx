@@ -1,6 +1,6 @@
-import { useContext, useState, useEffect } from 'react';
-import { ResultsContext, IResultsState, IResult } from 'stores/ResultsStore';
-import { IClickedState, ClickedContext } from 'stores/ClickedStore';
+import { useContext, useState } from 'react';
+import { ResultsContext, IResult } from 'stores/ResultsStore';
+import { ClickedContext } from 'stores/ClickedStore';
 import Result from 'components/specific/results/result';
 import { Pagination } from 'semantic-ui-react';
 
@@ -10,9 +10,8 @@ import { Pagination } from 'semantic-ui-react';
  */
 
 const Results = (): JSX.Element => {
-  // TODO: to resolve
-  const [resultsState] = useContext<IResultsState>(ResultsContext);
-  const [clickedState] = useContext<IClickedState>(ClickedContext);
+  const { state: resultsState } = useContext(ResultsContext);
+  const { state: clickedState } = useContext(ClickedContext);
   const [activePage, setActivePage] = useState<number>(1);
   const containerClassName: string = 'results-container';
   const individualClassName: string = 'result';

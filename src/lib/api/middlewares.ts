@@ -1,5 +1,7 @@
 import Cors from 'cors';
 
+// TODO: implement cors middleware using example from https://github.com/vercel/next.js/tree/canary/examples/api-routes-cors
+
 // Initializing the cors middleware
 const cors = Cors({
   methods: ['GET', 'HEAD']

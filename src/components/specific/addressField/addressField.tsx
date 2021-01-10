@@ -1,9 +1,9 @@
 import InputField from 'components/generic/inputField';
 
 import { useContext, useEffect, useState } from 'react';
-import { ParamsContext, IParamsState } from 'stores/ParamsStore';
-import { IResult, ResultsContext, IResultsState } from 'stores/ResultsStore';
-import { IClickedState, ClickedContext } from 'stores/ClickedStore';
+import { ParamsContext } from 'stores/ParamsStore';
+import { IResult, ResultsContext } from 'stores/ResultsStore';
+import { ClickedContext } from 'stores/ClickedStore';
 import GoogleConsoleAPI from 'lib/api/googleConsole/googleConsoleAPI';
 import { ILatlng, IGetLatLngFromAddress, IGetResultsFromLatlng } from 'lib/api/googleConsole/interfaces';
 
@@ -17,10 +17,9 @@ import { ILatlng, IGetLatLngFromAddress, IGetResultsFromLatlng } from 'lib/api/g
 // });
 
 const AddressField = (): JSX.Element => {
-  // TODO: to resolve
-  const [paramsState, paramsDispatch] = useContext<IParamsState>(ParamsContext);
-  const [_, resultsDispatch] = useContext<IResultsState>(ResultsContext);
-  const [clickedState, clickedDispatch] = useContext<IClickedState>(ClickedContext);
+  const { state: paramsState, dispatch: paramsDispatch } = useContext(ParamsContext);
+  const { dispatch: resultsDispatch } = useContext(ResultsContext);
+  const { state: clickedState, dispatch: clickedDispatch } = useContext(ClickedContext);
   const [latlng, setLatlng] = useState<ILatlng>({} as ILatlng);
   // to prevent running of useEffect before data is fetched and parsed completely
   const [internalClickState, setInternalClickState] = useState<boolean>(false);

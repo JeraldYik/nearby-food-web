@@ -1,1 +1,1 @@
-// export { default } from './googleMaps'
+export { default } from './googleMaps';

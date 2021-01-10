@@ -6,13 +6,13 @@ const baseURL: string = publicRuntimeConfig.BASE_URL || '';
 const corsBypassURL: string = publicRuntimeConfig.CORS_BYPASS_URL || '';
 
 const API = {
-  get: async <Response>(internal: boolean, path: string, params?: any, queries?: any, body?: any): Promise<Response | undefined> => {
+  get: async <Response>(internal: boolean, path: string, params?: any, queries?: any, body?: any): Promise<Response> => {
     try {
       const url = generateURL(internal, path, params, queries);
-      console.log('url in call ', url);
+      // console.log('url in call ', url);
       // TODO: use middleware approach to enable CORS
       const response = await axios.get(url);
-      console.log(response);
+      // console.log(response);
       return response.data as Response;
     } catch (error) {
       if (error.response) {
@@ -39,7 +39,6 @@ export const generateURL = (internal: boolean, path: string, params?: any, queri
   } else {
     finalURL = path;
   }
-  console.log(internal, finalURL);
   if (params) {
     const paramKeys = Object.getOwnPropertyNames(params);
     for (const p of paramKeys) {
