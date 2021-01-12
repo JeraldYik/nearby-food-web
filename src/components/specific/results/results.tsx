@@ -26,6 +26,7 @@ const Results = (): JSX.Element => {
 
   const ResultsSegment = (): JSX.Element => (
     <div className={containerClassName}>
+      <p>(Click on a card to view its location on Google Maps)</p>
       {resultsState.results.slice(numResultsPerPage * (activePage - 1), numResultsPerPage * activePage).map((s: IResult, idx: number) => (
         <Result
           className={`${individualClassName}-${idx + 1}`}

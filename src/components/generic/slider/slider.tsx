@@ -30,10 +30,10 @@ const SliderComponent = (props: IProps) => {
 
   return (
     <Grid className={props.className}>
-      <Grid.Column width={10}>
+      <Grid.Column width={16}>
         <Slider multiple={Array.isArray(props.start)} discrete={props.discrete} value={values} color='blue' settings={settings} />
       </Grid.Column>
-      <Grid.Column width={10}>
+      <Grid.Column width={16}>
         {Array.isArray(values) ? (
           values.map((val, i) => (
             <Label key={i} color='blue'>
