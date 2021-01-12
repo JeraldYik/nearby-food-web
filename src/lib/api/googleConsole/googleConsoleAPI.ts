@@ -10,7 +10,6 @@ const getLatLngFromAddress = async (queries: IGetLatLngFromAddress): Promise<ILa
   queries['address'] += ' Singapore';
   queries['key'] = GOOGLE_APIKEY;
   const response: any = await API.get(true, geocode_path, null, queries, null);
-  console.log(response);
   const latlng: ILatlng = {
     lat: response.results[0].geometry.location.lat,
     lng: response.results[0].geometry.location.lng

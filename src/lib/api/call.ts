@@ -8,20 +8,27 @@ const API = {
       const url = generateURL(internal, path, params, queries);
       // console.log('url in call ', url);
       const response = await axios.get(url);
-      // console.log(response);
-      return response.data as Response;
+      if (response.data.status === 'OK') {
+        return response.data as Response;
+      } else {
+        console.log(response.data.error_message);
+        throw response.data.error_message;
+      }
     } catch (error) {
       if (error.response) {
         // The request was made and the server responded with a status code
         // that falls out of the range of 2xx
+        console.log(error.response);
         throw error.response;
       } else if (error.request) {
         // The request was made but no response was received
         // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
         // http.ClientRequest in node.js
+        console.log(error.request);
         throw error.request;
       } else {
         // Something happened in setting up the request that triggered an Error
+        console.log(error.message);
         throw error.message;
       }
     }
