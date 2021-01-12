@@ -5,9 +5,8 @@
   "scripts": {
     "dev": "next dev ./src",
     "build": "next build ./src",
-    "start:dev": "npm run build && next start ./src",
-    "start": "npm run build && next start ./src -p $PORT",
-    "heroku-postbuild": "npm run build"
+    "start": "next start ./src -p $PORT",
+    "start:dev": "npm run build && next start ./src"
   },
   "dependencies": {
     "@types/node": "^14.14.14",
