@@ -1,18 +1,10 @@
 import API from 'lib/api/call';
-import getConfig from 'next/config';
 import { geocode_path, places_nearbysearch_path } from 'lib/api/googleConsole/paths';
 import { ILatlng, IGetLatLngFromAddress, IGetResultsFromLatlng } from 'lib/api/googleConsole/interfaces';
 import { IResult } from 'stores/ResultsStore';
 import { sleep } from 'lib/helper';
 
-let GOOGLE_APIKEY: string = '';
-
-if (process.env.NODE_ENV === 'development') {
-  const { publicRuntimeConfig } = getConfig();
-  GOOGLE_APIKEY = publicRuntimeConfig.GOOGLE_APIKEY || '';
-} else {
-  GOOGLE_APIKEY = process.env.GOOGLE_APIKEY || '';
-}
+const GOOGLE_APIKEY: string = process.env.GOOGLE_APIKEY || '';
 
 const getLatLngFromAddress = async (queries: IGetLatLngFromAddress): Promise<ILatlng> => {
   queries['address'] += ' Singapore';

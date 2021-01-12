@@ -10,6 +10,9 @@ import NextCors from 'nextjs-cors';
 
 export default async (req: NextApiRequest, res: NextApiResponse): Promise<Response | void> => {
   // console.log(req.query);
+  /** DOCUMENTATION
+   *  https://github.com/yonycalsin/nextjs-cors
+   */
   await NextCors(req, res, {
     // Options
     methods: ['GET'],

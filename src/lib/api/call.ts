@@ -1,17 +1,7 @@
 import axios from 'axios';
-import getConfig from 'next/config';
 
-let baseURL: string = '';
-let corsBypassURL: string = '';
-
-if (process.env.NODE_ENV === 'development') {
-  const { publicRuntimeConfig } = getConfig();
-  baseURL = publicRuntimeConfig.BASE_URL || '';
-  corsBypassURL = publicRuntimeConfig.CORS_BYPASS_URL || '';
-} else {
-  baseURL = process.env.BASE_URL || '';
-  corsBypassURL = process.env.CORS_BYPASS_URL || '';
-}
+const baseURL = process.env.BASE_URL || '';
+const corsBypassURL = process.env.CORS_BYPASS_URL || '';
 
 const API = {
   get: async <Response>(internal: boolean, path: string, params?: any, queries?: any, body?: any): Promise<Response> => {
