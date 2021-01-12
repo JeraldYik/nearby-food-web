@@ -7,7 +7,7 @@ import { sleep } from 'lib/helper';
 const GOOGLE_APIKEY: string = process.env.GOOGLE_APIKEY || '';
 
 const getLatLngFromAddress = async (queries: IGetLatLngFromAddress): Promise<ILatlng> => {
-  console.log(process.env.GOOGLE_APIKEY);
+  console.log(process.env.GOOGLE_APIKEY, process.env.NODE_ENV);
   queries['address'] += ' Singapore';
   queries['key'] = GOOGLE_APIKEY;
   const response: any = await API.get(true, geocode_path, null, queries, null);
