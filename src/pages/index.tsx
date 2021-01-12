@@ -8,12 +8,20 @@ import DollarSign from 'components/specific/dollarSign';
 import RadiusField from 'components/specific/radiusField';
 import Results from 'components/specific/results';
 
+const backgroundColor = {
+  background: 'radial-gradient(circle, rgba(255, 222, 233,0.4) 0%, rgba(181, 255, 252,0.4) 100%)'
+};
+
+const backgroundTransparent = {
+  backgroundColor: 'transparent'
+};
+
 const LandingPage = (): JSX.Element => {
   return (
-    <Grid id='landing-page__content' stackable columns={2}>
+    <Grid id='landing-page__content' style={backgroundColor} stackable columns={2}>
       <Grid.Column>
-        <Segment>
-          <h1>Change the filters and fields as desired and hit Submit!</h1>
+        <Segment style={backgroundTransparent}>
+          <h1>Adjust the filters and fields as desired and hit Submit!</h1>
           {/* <h1>Map</h1> */}
           {/* <GoogleMaps /> */}
           <h3>Enter the location of search (Postal Code/Street Name/Building Name etc.)</h3>
@@ -29,7 +37,7 @@ const LandingPage = (): JSX.Element => {
         </Segment>
       </Grid.Column>
       <Grid.Column>
-        <Segment>
+        <Segment style={backgroundTransparent}>
           <h3>Results Segment</h3>
           <Results />
         </Segment>
