@@ -6,7 +6,7 @@
     "dev": "next dev ./src",
     "build": "next build ./src",
     "start:dev": "npm run build && next start ./src",
-    "start": "next start -p $PORT",
+    "start": "npm run build && next start ./src -p $PORT",
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
