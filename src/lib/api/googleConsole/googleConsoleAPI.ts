@@ -7,10 +7,10 @@ import { sleep } from 'lib/helper';
 const GOOGLE_APIKEY: string = process.env.GOOGLE_APIKEY || '';
 
 const getLatLngFromAddress = async (queries: IGetLatLngFromAddress): Promise<ILatlng> => {
+  console.log(process.env);
   queries['address'] += ' Singapore';
   queries['key'] = GOOGLE_APIKEY;
   const response: any = await API.get(true, geocode_path, null, queries, null);
-  // TODO: to resolve
   const latlng: ILatlng = {
     lat: response.results[0].geometry.location.lat,
     lng: response.results[0].geometry.location.lng
@@ -28,7 +28,6 @@ const getResultsFromLatlng = async (queries: IGetResultsFromLatlng): Promise<Arr
     const isNextPageToken: boolean = nextPageToken !== '';
     const filteredQueries = isNextPageToken ? { key: GOOGLE_APIKEY, pagetoken: nextPageToken } : { ...queries, key: GOOGLE_APIKEY, rating: null };
     const response: any = await API.get(false, places_nearbysearch_path, null, filteredQueries, null);
-    // TODO: to resolve
     nextPageToken = response['next_page_token'] ? response['next_page_token'] : '';
     results = [...results, ...response.results];
     // small delay of 2s between each page of results

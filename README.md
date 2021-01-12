@@ -35,7 +35,7 @@ This project expounds on the functionality introduced in my [telegram bot](https
 ## API calling
 
 - [x] Set up infrastructure to call API & handle errors
-- [ ] Can successfully call API
+- [x] Can successfully call API
 
 ## Back-end
 
@@ -45,4 +45,4 @@ This project expounds on the functionality introduced in my [telegram bot](https
 
 ## Deployment
 
-- [ ] Deploy onto cloud (will use Heroku for now, since Free Tier Amazon EC2 only lasts for 31 days)
+- [x] Deploy onto cloud (will use Heroku for now, will switch to AWS after more researching)
