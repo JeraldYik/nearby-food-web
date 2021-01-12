@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 const baseURL = process.env.BASE_URL || '';
-const corsBypassURL = process.env.CORS_BYPASS_URL || '';
 
 const API = {
   get: async <Response>(internal: boolean, path: string, params?: any, queries?: any, body?: any): Promise<Response> => {
@@ -32,7 +31,7 @@ const API = {
 export const generateURL = (internal: boolean, path: string, params?: any, queries?: any): string => {
   let finalURL: string = '';
   if (internal) {
-    finalURL = corsBypassURL + baseURL + (path.charAt(0) === '/' ? path : '/' + path);
+    finalURL = baseURL + (path.charAt(0) === '/' ? path : '/' + path);
   } else {
     finalURL = path;
   }
