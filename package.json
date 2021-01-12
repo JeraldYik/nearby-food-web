@@ -8,13 +8,14 @@
     "start": "npm run build && next start ./src"
   },
   "dependencies": {
-    "@zeit/next-css": "^1.0.1",
     "@types/node": "^14.14.14",
     "@types/react": "^17.0.0",
+    "@zeit/next-css": "^1.0.1",
     "axios": "^0.21.1",
     "class-transformer": "^0.3.1",
     "cors": "^2.8.5",
     "next": "10.0.3",
+    "nextjs-cors": "^1.0.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-semantic-ui-range": "^0.7.0",

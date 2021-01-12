@@ -13,7 +13,8 @@ const LandingPage = (): JSX.Element => {
     <Grid id='landing-page__content' stackable columns={2}>
       <Grid.Column>
         <Segment>
-          <h1>Map</h1>
+          <h1>Change the filters and fields as desired and hit submit!</h1>
+          {/* <h1>Map</h1> */}
           {/* <GoogleMaps /> */}
           <h3>Input field for address. Submit Button. Get my current address</h3>
           <AddressField />

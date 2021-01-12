@@ -2,6 +2,7 @@
 
 import { NextApiRequest, NextApiResponse } from 'next';
 import API from 'lib/api/call';
+import NextCors from 'nextjs-cors';
 
 /** DOCUMENTATION
  *  https://developers.google.com/maps/documentation/geocoding/overview
@@ -9,6 +10,12 @@ import API from 'lib/api/call';
 
 export default async (req: NextApiRequest, res: NextApiResponse): Promise<Response | void> => {
   // console.log(req.query);
+  await NextCors(req, res, {
+    // Options
+    methods: ['GET'],
+    origin: '*',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  });
   const baseURL = 'https://maps.googleapis.com/maps/api/geocode/json';
   const response = await API.get(false, baseURL, null, req.query, null);
   res.send(response);

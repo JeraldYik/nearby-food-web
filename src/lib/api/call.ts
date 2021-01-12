@@ -18,7 +18,6 @@ const API = {
     try {
       const url = generateURL(internal, path, params, queries);
       // console.log('url in call ', url);
-      // TODO: use middleware approach to enable CORS
       const response = await axios.get(url);
       // console.log(response);
       return response.data as Response;
