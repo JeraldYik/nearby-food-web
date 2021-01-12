@@ -7,10 +7,6 @@ module.exports = {
     GOOGLE_APIKEY: process.env.GOOGLE_APIKEY,
     BASE_URL: process.env.BASE_URL
   },
-  // env: {
-  //   GOOGLE_APIKEY: 'AIzaSyDZ-JBAYYubAKhgNYCnM4KBPcJnFohYLDo',
-  //   BASE_URL: 'http://localhost:3000'
-  // },
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')]
   }
