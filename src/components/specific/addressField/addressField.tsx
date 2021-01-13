@@ -6,6 +6,7 @@ import { IResult, ResultsContext } from 'stores/ResultsStore';
 import { ClickedContext } from 'stores/ClickedStore';
 import GoogleConsoleAPI from 'lib/api/googleConsole/googleConsoleAPI';
 import { ILatlng, IGetLatLngFromAddress, IGetResultsFromLatlng } from 'lib/api/googleConsole/interfaces';
+import { ErrorHandler } from 'hooks/useErrorHandler';
 
 // const numResults = 20;
 // const exampledata = new Array(numResults).fill({
@@ -23,6 +24,7 @@ const AddressField = (): JSX.Element => {
   const [latlng, setLatlng] = useState<ILatlng>({} as ILatlng);
   // to prevent running of useEffect before data is fetched and parsed completely
   const [internalClickState, setInternalClickState] = useState<boolean>(false);
+  const useErrorHandler = useContext(ErrorHandler);
 
   const handleClickEvent = (value: string) => {
     paramsDispatch({ type: 'setAddress', payload: value });
@@ -33,22 +35,24 @@ const AddressField = (): JSX.Element => {
   //   resultsDispatch({ type: 'setResults', payload: exampledata });
   // }, []);
 
-  useEffect(() => {
-    // TODO: produce error message when address field is empty
+  const submitButtonClicked = async (): Promise<void> => {
     if (paramsState.address !== '' && internalClickState) {
       clickedDispatch({ type: 'setClicked', payload: true });
       // make api call to google console
       const queries: IGetLatLngFromAddress = {
         address: paramsState.address
       };
-      GoogleConsoleAPI.getLatLngFromAddress(queries).then((response: ILatlng) => {
+      try {
+        const response: ILatlng = await GoogleConsoleAPI.getLatLngFromAddress(queries);
         setLatlng(response);
-      });
+      } catch (err) {
+        useErrorHandler.sendError(err);
+      }
       setInternalClickState(false);
     }
-  }, [internalClickState]);
+  };
 
-  useEffect(() => {
+  const setResults = async (): Promise<void> => {
     // ignore default (on load)
     if (latlng && Object.keys(latlng).length > 0) {
       const queries: IGetResultsFromLatlng = {
@@ -60,11 +64,22 @@ const AddressField = (): JSX.Element => {
         radius: paramsState.radius,
         opennow: ''
       };
-      GoogleConsoleAPI.getResultsFromLatlng(queries).then((response: Array<IResult>) => {
+      try {
+        const response: Array<IResult> = await GoogleConsoleAPI.getResultsFromLatlng(queries);
         clickedDispatch({ type: 'setClicked', payload: false });
         resultsDispatch({ type: 'setResults', payload: response });
-      });
+      } catch (err) {
+        useErrorHandler.sendError(err);
+      }
     }
+  };
+
+  useEffect(() => {
+    void submitButtonClicked();
+  }, [internalClickState]);
+
+  useEffect(() => {
+    void setResults();
   }, [latlng]);
 
   return (

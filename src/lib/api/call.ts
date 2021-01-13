@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { ErrorType } from 'hooks/useErrorHandler';
 
 const baseURL = process.env.BASE_URL || '';
 
@@ -11,25 +12,39 @@ const API = {
       if (response.data.status === 'OK') {
         return response.data as Response;
       } else {
-        console.log(response.data.error_message);
-        throw response.data.error_message;
+        throw response.data;
       }
     } catch (error) {
       if (error.response) {
         // The request was made and the server responded with a status code
         // that falls out of the range of 2xx
-        console.log(error.response);
-        throw error.response;
+        console.log('error.response: ', error.response);
+        const err: ErrorType = {
+          statusCode: error.response.status,
+          errorMessage: error.response.data
+        };
+        throw err;
       } else if (error.request) {
         // The request was made but no response was received
         // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
         // http.ClientRequest in node.js
-        console.log(error.request);
-        throw error.request;
+        console.log('error.request: ', error.request);
+        const err: ErrorType = {
+          statusCode: error.request.status,
+          errorMessage: error.request.data
+        };
+        throw err;
       } else {
         // Something happened in setting up the request that triggered an Error
-        console.log(error.message);
-        throw error.message;
+        error.message && console.log('error.message: ', error.message);
+        error.error_message && console.log('error.error_message: ', error.error_message);
+        // TODO: map error codes to statuses
+        const err: ErrorType = {
+          statusCode: 0,
+          errorMessage: error.message || error.error_message
+        };
+        err.statusCode = error.status === 'REQUEST_DENIED' ? 403 : 500;
+        throw err;
       }
     }
   }

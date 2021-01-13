@@ -1,8 +1,5 @@
 import { useState } from 'react';
 import { Input, Button } from 'semantic-ui-react';
-
-// import './styles.scss';
-
 interface IProps {
   className: string;
   placeholder: string;
@@ -33,7 +30,7 @@ const InputField = (props: IProps): JSX.Element => {
         onChange={handleChangeEvent}
         style={{ width: '85%' }}
       />
-      <Button primary size='large' onClick={handleClickEvent} disabled={props.clicked}>
+      <Button primary size='large' onClick={handleClickEvent} disabled={props.clicked || value === ''}>
         Submit
       </Button>
     </div>
