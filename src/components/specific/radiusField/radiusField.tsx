@@ -18,6 +18,7 @@ const RadiusField = (): JSX.Element => {
       max={5}
       step={0.01}
       discrete={false}
+      width={16}
       onChange={handleChangeEvent}
       label={` km`}
       labelLeft={false}

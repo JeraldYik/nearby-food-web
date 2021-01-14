@@ -18,6 +18,7 @@ const DollarSign = (): JSX.Element => {
       max={5}
       step={1}
       discrete={true}
+      width={6}
       onChange={handleChangeEvent}
       label={` $`}
       labelLeft={false}

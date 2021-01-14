@@ -19,6 +19,7 @@ const Rating = (): JSX.Element => {
       max={5}
       step={0.1}
       discrete={false}
+      width={16}
       onChange={handleChangeEvent}
       label={` ${STAR_EMOJI}`}
       labelLeft={false}

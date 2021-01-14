@@ -20,9 +20,9 @@ function MyApp({ Component, pageProps }) {
               <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
               <meta name='viewport' content='width=device-width, initial-scale=1' />
               {/* TODO: to fix favicon */}
-              <link rel='shortcut icon' type='image/x-icon' sizes='32x32' href='/static/favicon.ico' />
-              <link rel='shortcut icon' type='image/png' sizes='16x16' href='/static/favicon-16x16.png' />
-              <link rel='shortcut icon' type='image/png' sizes='32x32' href='/static/favicon-32x32.png' />
+              <link rel='shortcut icon' type='image/x-icon' sizes='32x32' href='/favicon.ico' />
+              <link rel='shortcut icon' type='image/png' sizes='16x16' href='/favicon-16x16.png' />
+              <link rel='shortcut icon' type='image/png' sizes='32x32' href='/favicon-32x32.png' />
             </Head>
             <Component {...pageProps} />
           </ErrorHandlerProvider>

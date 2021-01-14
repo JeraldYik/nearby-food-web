@@ -28,6 +28,8 @@ const LandingPage = (): JSX.Element => {
           <AddressField />
           <h3>Type of Eatery (Restaurant/Café) button</h3>
           <EateryType />
+          <br />
+          <small>Please refresh the page if the sliders are displayed incorrectly.</small>
           <h3>Rating Above Slider</h3>
           <Rating />
           <h3>Dollar Sign Slider</h3>
