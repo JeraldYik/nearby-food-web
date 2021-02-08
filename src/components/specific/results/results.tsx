@@ -54,7 +54,7 @@ const Results = (): JSX.Element => {
   return clickedState.clicked ? (
     <LoadingData />
   ) : Object.keys(resultsState.results).length > 0 ? (
-    resultsState.results[0] === null ? (
+    resultsState.results[0].name === 'ZERO_RESULTS' ? (
       <NoResultsFound />
     ) : (
       <ResultsSegment />

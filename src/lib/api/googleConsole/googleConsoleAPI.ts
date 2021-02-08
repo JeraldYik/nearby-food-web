@@ -17,7 +17,7 @@ const getLatLngFromAddress = async (queries: IGetLatLngFromAddress): Promise<ILa
   return latlng;
 };
 
-const getResultsFromLatlng = async (queries: IGetResultsFromLatlng): Promise<Array<IResult | null>> => {
+const getResultsFromLatlng = async (queries: IGetResultsFromLatlng): Promise<Array<IResult>> => {
   let pages: number = 1;
   let nextPageToken: string = '';
   let results = [] as any;
@@ -27,7 +27,18 @@ const getResultsFromLatlng = async (queries: IGetResultsFromLatlng): Promise<Arr
     const isNextPageToken: boolean = nextPageToken !== '';
     const filteredQueries = isNextPageToken ? { key: GOOGLE_APIKEY, pagetoken: nextPageToken } : { ...queries, key: GOOGLE_APIKEY, rating: null };
     const response: any = await API.get(false, places_nearbysearch_path, null, filteredQueries, null);
-    if (response === null) return [null];
+    if (response === null) {
+      // TODO: to think of another workaround
+      return [
+        {
+          name: 'ZERO_RESULTS',
+          rating: 0,
+          priceLevel: 0,
+          vicinity: '',
+          url: ''
+        }
+      ];
+    }
     nextPageToken = response['next_page_token'] ? response['next_page_token'] : '';
     results = [...results, ...response.results];
     // small delay of 2s between each page of results
