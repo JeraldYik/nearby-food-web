@@ -27,6 +27,12 @@ const Results = (): JSX.Element => {
   const ResultsSegment = (): JSX.Element => (
     <div className={containerClassName}>
       <p>(Click on a card to view its location on Google Maps)</p>
+      <Pagination
+        activePage={activePage}
+        onPageChange={onPageChange}
+        totalPages={Math.ceil(Object.keys(resultsState.results).length / numResultsPerPage)}
+        ellipsisItem={null}
+      />
       {resultsState.results.slice(numResultsPerPage * (activePage - 1), numResultsPerPage * activePage).map((s: IResult, idx: number) => (
         <Result
           className={`${individualClassName}-${idx + 1}`}
@@ -38,18 +44,24 @@ const Results = (): JSX.Element => {
           key={`result-${idx}`}
         />
       ))}
-      <Pagination
-        activePage={activePage}
-        onPageChange={onPageChange}
-        totalPages={Math.ceil(Object.keys(resultsState.results).length / numResultsPerPage)}
-        ellipsisItem={null}
-      />
     </div>
   );
 
-  const NoResults = (): JSX.Element => <h5>No Results</h5>;
+  const NotSubmitted = (): JSX.Element => <h5>Not Submitted</h5>;
 
-  return clickedState.clicked ? <LoadingData /> : Object.keys(resultsState.results).length > 0 ? <ResultsSegment /> : <NoResults />;
+  const NoResultsFound = (): JSX.Element => <h5>No Results found. Please try again with different inputs</h5>;
+
+  return clickedState.clicked ? (
+    <LoadingData />
+  ) : Object.keys(resultsState.results).length > 0 ? (
+    resultsState.results[0] === null ? (
+      <NoResultsFound />
+    ) : (
+      <ResultsSegment />
+    )
+  ) : (
+    <NotSubmitted />
+  );
 };
 
 export default Results;

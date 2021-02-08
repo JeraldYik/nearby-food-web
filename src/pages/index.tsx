@@ -9,7 +9,8 @@ import RadiusField from 'components/specific/radiusField';
 import Results from 'components/specific/results';
 
 const backgroundColor = {
-  background: 'radial-gradient(circle, rgba(255, 222, 233,0.4) 0%, rgba(181, 255, 252,0.4) 100%)'
+  background: 'radial-gradient(circle, rgba(255, 222, 233,0.4) 0%, rgba(181, 255, 252,0.4) 100%)',
+  height: '100vh'
 };
 
 const backgroundTransparent = {

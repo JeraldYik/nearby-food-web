@@ -4,12 +4,15 @@ import { ErrorType } from 'hooks/useErrorHandler';
 const baseURL = process.env.BASE_URL || '';
 
 const API = {
-  get: async <Response>(internal: boolean, path: string, params?: any, queries?: any, body?: any): Promise<Response> => {
+  get: async <Response>(internal: boolean, path: string, params?: any, queries?: any, body?: any): Promise<Response | null> => {
     try {
       const url = generateURL(internal, path, params, queries);
       // console.log('url in call ', url);
       const response = await axios.get(url);
-      if (response.data.status === 'OK') {
+      // console.log('response', response);
+      if (response.data === '' || response.data.status === 'ZERO_RESULTS') {
+        return null;
+      } else if (response.data.status === 'OK') {
         return response.data as Response;
       } else {
         throw response.data;
